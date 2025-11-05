@@ -1,0 +1,206 @@
+# Default values for conference-games
+# This is a YAML-formatted file.
+
+# Global configuration
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+  # Environment: development, staging, production
+  environment: "production"
+
+# Frontend configuration
+frontend:
+  image:
+    repository: conference-games/frontend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+  
+  replicaCount: 2
+  
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 80
+  
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+  
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# Backend configuration
+backend:
+  image:
+    repository: conference-games/backend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+  
+  replicaCount: 2
+  
+  service:
+    type: ClusterIP
+    port: 3000
+    targetPort: 3000
+  
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  
+  # Environment variables
+  env:
+    NODE_ENV: production
+    PORT: 3000
+    TIMER_DEFAULT_SECONDS: 30
+    HISTORY_SIZE: 10
+    CONFIGMAP_PATH: "/app/content"
+    CONTENT_CACHE_TIMEOUT: "300000"
+    WATCH_CONFIG_CHANGES: "true"
+  
+  # Health check configuration
+  healthCheck:
+    enabled: true
+    path: /health
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# Horizontal Pod Autoscaler
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: "alb"
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: '30'
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5'
+    alb.ingress.kubernetes.io/healthy-threshold-count: '2'
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: '3'
+  
+  hosts:
+    - host: conference-games.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service: frontend
+        - path: /api
+          pathType: Prefix
+          service: backend
+  
+  tls: []
+  # - secretName: conference-games-tls
+  #   hosts:
+  #     - conference-games.example.com
+
+# Game content configuration
+gameContent:
+  sentences:
+    # Content will be populated from ConfigMap
+    categories:
+      - "Kubernetes"
+      - "DevOps" 
+      - "Observability"
+      - "Culture"
+  
+  acronyms:
+    # Content will be populated from ConfigMap
+    enabled: true
+
+# PostgreSQL configuration (if using in-cluster database)
+postgresql:
+  enabled: false
+  auth:
+    postgresPassword: "changeme"
+    database: "conference_games"
+  primary:
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+
+# External database configuration (for RDS)
+externalDatabase:
+  enabled: true
+  host: ""
+  port: 5432
+  database: "conference_games"
+  username: "postgres"
+  # Password should be provided via secret
+  existingSecret: "postgres-secret"
+  existingSecretPasswordKey: "password"
+
+# Service Account
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+# Pod Security Context
+podSecurityContext:
+  fsGroup: 2000
+
+# Security Context
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+# ConfigMaps
+configMaps:
+  gameContent:
+    create: true
+    # Content files are loaded from helm/conference-games/content/ directory
+    # Hot reload is supported via file watching in the backend service
+    hotReload: true
+    # ConfigMap will be mounted at /app/content in the backend pod
+    # Environment-specific ConfigMaps
+    environmentSpecific: true
+    # Content validation
+    validateContent: true
+
+# Monitoring and observability
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: false
+    namespace: monitoring
+    interval: 30s
+    path: /metrics
+
+# Network Policy
+networkPolicy:
+  enabled: false
+  ingress: []
+  egress: []

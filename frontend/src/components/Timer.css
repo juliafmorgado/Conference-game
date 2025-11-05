@@ -1,0 +1,261 @@
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  min-width: 280px;
+}
+
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.timer-text {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  color: #ffffff;
+  text-align: center;
+  min-width: 120px;
+  transition: color 0.3s ease;
+}
+
+.timer-text.timer-expired {
+  color: #ff4444;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.timer-progress-container {
+  width: 100%;
+  height: 8px;
+  background-color: #333;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.timer-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50 0%, #FFC107 70%, #FF5722 100%);
+  border-radius: 4px;
+  transition: width 1s linear;
+  position: relative;
+}
+
+.timer-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.timer-status {
+  min-height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-paused {
+  color: #FFC107;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.timer-completed {
+  color: #ff4444;
+  font-weight: bold;
+  font-size: 1.2rem;
+  animation: pulse 1s infinite;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+  background: rgba(255, 68, 68, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.timer-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.timer-main-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.timer-audio-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.timer-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 70px;
+}
+
+.timer-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.timer-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.timer-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.timer-btn-start {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.timer-btn-start:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.timer-btn-pause {
+  background-color: #FFC107;
+  color: #333;
+}
+
+.timer-btn-pause:hover:not(:disabled) {
+  background-color: #e6ac00;
+}
+
+.timer-btn-resume {
+  background-color: #2196F3;
+  color: white;
+}
+
+.timer-btn-resume:hover:not(:disabled) {
+  background-color: #1976D2;
+}
+
+.timer-btn-reset {
+  background-color: #757575;
+  color: white;
+}
+
+.timer-btn-reset:hover:not(:disabled) {
+  background-color: #616161;
+}
+
+.timer-btn-restart {
+  background-color: #FF5722;
+  color: white;
+}
+
+.timer-btn-restart:hover:not(:disabled) {
+  background-color: #E64A19;
+}
+
+.timer-btn-audio {
+  background-color: #9C27B0;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  min-width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-btn-audio:hover:not(:disabled) {
+  background-color: #7B1FA2;
+}
+
+.timer-btn-audio.audio-disabled {
+  background-color: #757575;
+}
+
+.timer-btn-audio.audio-disabled:hover:not(:disabled) {
+  background-color: #616161;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  .timer-container {
+    min-width: 240px;
+    padding: 0.75rem;
+  }
+  
+  .timer-text {
+    font-size: 2.5rem;
+  }
+  
+  .timer-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    min-width: 60px;
+  }
+
+  .timer-btn-audio {
+    font-size: 1rem;
+    padding: 0.4rem;
+    min-width: 45px;
+  }
+
+  .timer-controls {
+    gap: 0.5rem;
+  }
+}
+
+/* High contrast mode for better visibility during presentations */
+@media (prefers-contrast: high) {
+  .timer-container {
+    border: 2px solid #ffffff;
+  }
+  
+  .timer-text {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .timer-progress-container {
+    border: 1px solid #ffffff;
+  }
+}

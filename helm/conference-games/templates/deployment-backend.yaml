@@ -1,0 +1,123 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "conference-games.fullname" . }}-backend
+  labels:
+    {{- include "conference-games.backend.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.backend.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "conference-games.backend.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap-content.yaml") . | sha256sum }}
+      labels:
+        {{- include "conference-games.backend.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.global.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "conference-games.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: backend
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: {{ include "conference-games.backend.image" . }}
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.backend.service.targetPort }}
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.backend.env.NODE_ENV | quote }}
+            - name: PORT
+              value: {{ .Values.backend.env.PORT | quote }}
+            - name: TIMER_DEFAULT_SECONDS
+              value: {{ .Values.backend.env.TIMER_DEFAULT_SECONDS | quote }}
+            - name: HISTORY_SIZE
+              value: {{ .Values.backend.env.HISTORY_SIZE | quote }}
+            - name: CONFIGMAP_PATH
+              value: "/app/content"
+            - name: CONTENT_CACHE_TIMEOUT
+              value: "300000"
+            {{- if .Values.configMaps.gameContent.hotReload }}
+            - name: WATCH_CONFIG_CHANGES
+              value: "true"
+            {{- end }}
+            - name: DB_HOST
+              value: {{ include "conference-games.database.host" . | quote }}
+            - name: DB_PORT
+              value: {{ include "conference-games.database.port" . | quote }}
+            - name: DB_NAME
+              value: {{ include "conference-games.database.name" . | quote }}
+            - name: DB_USER
+              value: {{ include "conference-games.database.username" . | quote }}
+            {{- if .Values.externalDatabase.enabled }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.externalDatabase.existingSecret }}
+                  key: {{ .Values.externalDatabase.existingSecretPasswordKey }}
+            {{- else if .Values.postgresql.enabled }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "conference-games.fullname" . }}-postgresql
+                  key: postgres-password
+            {{- end }}
+          {{- if .Values.backend.healthCheck.enabled }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.backend.healthCheck.path }}
+              port: http
+            initialDelaySeconds: {{ .Values.backend.healthCheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.backend.healthCheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.backend.healthCheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.backend.healthCheck.failureThreshold }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.backend.healthCheck.path }}
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: {{ .Values.backend.healthCheck.timeoutSeconds }}
+            failureThreshold: 3
+          {{- end }}
+          resources:
+            {{- toYaml .Values.backend.resources | nindent 12 }}
+          volumeMounts:
+            - name: game-content
+              mountPath: /app/content
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: game-content
+          configMap:
+            {{- if .Values.configMaps.gameContent.environmentSpecific }}
+            name: {{ include "conference-games.fullname" . }}-content-{{ .Values.global.environment }}
+            {{- else }}
+            name: {{ include "conference-games.fullname" . }}-content
+            {{- end }}
+        - name: tmp
+          emptyDir: {}
+      {{- with .Values.backend.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.backend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.backend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

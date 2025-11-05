@@ -1,0 +1,22 @@
+{{- if and .Values.configMaps.gameContent.create (eq .Values.global.environment "production") }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "conference-games.fullname" . }}-content-prod
+  labels:
+    {{- include "conference-games.labels" . | nindent 4 }}
+    app.kubernetes.io/component: content
+    app.kubernetes.io/environment: production
+  annotations:
+    # Production ConfigMaps should be more stable
+    description: "Production game content - stable and tested"
+    # Disable automatic reloading in production for stability
+    {{- if .Values.configMaps.gameContent.hotReload }}
+    configmap.reloader.stakater.com/reload: "true"
+    {{- end }}
+data:
+  sentences.json: |
+{{ .Files.Get "content/sentences.json" | indent 4 }}
+  acronyms.json: |
+{{ .Files.Get "content/acronyms.json" | indent 4 }}
+{{- end }}

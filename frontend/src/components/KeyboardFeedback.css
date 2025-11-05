@@ -1,0 +1,74 @@
+/* Keyboard feedback styles */
+.keyboard-feedback {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.keyboard-feedback.show {
+  opacity: 1;
+}
+
+/* Keyboard shortcuts help text styles */
+.shortcuts-text {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shortcuts-text strong {
+  color: #333;
+}
+
+/* Visual feedback for button presses */
+.btn.keyboard-pressed {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* Highlight active shortcuts in help text */
+.shortcuts-text .shortcut-key {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-weight: bold;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+/* Dark mode support for shortcuts */
+@media (prefers-color-scheme: dark) {
+  .shortcuts-text {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #ccc;
+  }
+  
+  .shortcuts-text strong {
+    color: #fff;
+  }
+  
+  .shortcuts-text .shortcut-key {
+    background: #333;
+    color: #fff;
+    border-color: #555;
+  }
+}

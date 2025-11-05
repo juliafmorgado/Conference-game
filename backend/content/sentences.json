@@ -1,0 +1,204 @@
+{
+  "sentences": [
+    {
+      "id": "k8s-1",
+      "text": "The best thing about Kubernetes is...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-2",
+      "text": "When debugging a pod, the first thing I check is...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-3",
+      "text": "The most confusing part of Kubernetes networking is...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-4",
+      "text": "My favorite kubectl command is...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-5",
+      "text": "The hardest part about learning Kubernetes was...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-6",
+      "text": "When a deployment fails, I always...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-7",
+      "text": "The difference between a Service and an Ingress is...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-8",
+      "text": "Helm charts make my life easier because...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-9",
+      "text": "The most important security practice in Kubernetes is...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-10",
+      "text": "When scaling applications in Kubernetes, you should consider...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "devops-1",
+      "text": "DevOps culture means...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-2",
+      "text": "The biggest challenge in CI/CD is...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-3",
+      "text": "Infrastructure as Code helps us...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-4",
+      "text": "The most important metric for deployment success is...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-5",
+      "text": "When a pipeline breaks, the first thing I do is...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-6",
+      "text": "The key to successful automation is...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-7",
+      "text": "Version control best practices include...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-8",
+      "text": "The difference between blue-green and canary deployments is...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-9",
+      "text": "Configuration management tools help teams...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-10",
+      "text": "The most underrated DevOps practice is...",
+      "category": "DevOps"
+    },
+    {
+      "id": "obs-1",
+      "text": "Good observability starts with...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-2",
+      "text": "The difference between monitoring and observability is...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-3",
+      "text": "When an alert fires at 3 AM, I...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-4",
+      "text": "The three pillars of observability are...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-5",
+      "text": "Distributed tracing helps you understand...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-6",
+      "text": "The most important thing to log is...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-7",
+      "text": "When setting up alerts, you should avoid...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-8",
+      "text": "Metrics without context are...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-9",
+      "text": "The best way to reduce alert fatigue is...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-10",
+      "text": "Synthetic monitoring helps detect...",
+      "category": "Observability"
+    },
+    {
+      "id": "culture-1",
+      "text": "Psychological safety in tech teams means...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-2",
+      "text": "The best way to handle production incidents is...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-3",
+      "text": "Remote work has changed how we...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-4",
+      "text": "Effective code reviews should focus on...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-5",
+      "text": "The most important quality in a team lead is...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-6",
+      "text": "When onboarding new team members, always...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-7",
+      "text": "Blameless postmortems work because...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-8",
+      "text": "The key to successful pair programming is...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-9",
+      "text": "Technical debt should be managed by...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-10",
+      "text": "The best conferences teach you...",
+      "category": "Culture"
+    }
+  ]
+}

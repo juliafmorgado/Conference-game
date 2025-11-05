@@ -1,0 +1,187 @@
+.game-selector {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #ffffff;
+}
+
+.game-selector__container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.game-selector__header {
+  margin-bottom: 3rem;
+}
+
+.game-selector__title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-selector__subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: #d1d5db;
+  margin: 0;
+  font-weight: 300;
+}
+
+.game-selector__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.game-selector__button {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+  border: 2px solid #6b7280;
+  border-radius: 16px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  font-family: inherit;
+  width: 100%;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-selector__button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: #9ca3af;
+}
+
+.game-selector__button:active {
+  transform: translateY(-2px);
+}
+
+.game-selector__button--finish-sentence:hover {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-color: #60a5fa;
+}
+
+.game-selector__button--guess-acronym:hover {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  border-color: #34d399;
+}
+
+.game-selector__button-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.game-selector__button-title {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.game-selector__button-description {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: #d1d5db;
+  font-weight: 400;
+}
+
+.game-selector__footer {
+  margin-top: 2rem;
+}
+
+.game-selector__footer-text {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: #9ca3af;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .game-selector__buttons {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  
+  .game-selector__button {
+    flex: 1;
+    min-height: 140px;
+  }
+}
+
+@media (min-width: 768px) {
+  .game-selector {
+    padding: 2rem;
+  }
+  
+  .game-selector__container {
+    max-width: 900px;
+  }
+  
+  .game-selector__header {
+    margin-bottom: 4rem;
+  }
+  
+  .game-selector__buttons {
+    margin-bottom: 4rem;
+  }
+  
+  .game-selector__button {
+    padding: 2.5rem;
+    min-height: 160px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game-selector__container {
+    max-width: 1000px;
+  }
+  
+  .game-selector__button {
+    padding: 3rem;
+    min-height: 180px;
+  }
+}
+
+/* High contrast mode for better video recording */
+@media (prefers-contrast: high) {
+  .game-selector__button {
+    border-width: 3px;
+  }
+  
+  .game-selector__title {
+    -webkit-text-fill-color: #ffffff;
+    background: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.game-selector__button:focus {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Animation for smooth transitions */
+@media (prefers-reduced-motion: no-preference) {
+  .game-selector__button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-selector__button {
+    transition: none;
+  }
+}

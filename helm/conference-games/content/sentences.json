@@ -1,0 +1,64 @@
+{
+  "sentences": [
+    {
+      "id": "k8s-1",
+      "text": "Kubernetes is...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-2", 
+      "text": "A pod in Kubernetes...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "k8s-3",
+      "text": "Container orchestration helps...",
+      "category": "Kubernetes"
+    },
+    {
+      "id": "devops-1",
+      "text": "DevOps means...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-2",
+      "text": "Continuous integration...",
+      "category": "DevOps"
+    },
+    {
+      "id": "devops-3",
+      "text": "Infrastructure as Code...",
+      "category": "DevOps"
+    },
+    {
+      "id": "obs-1",
+      "text": "Observability helps...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-2",
+      "text": "Monitoring and logging...",
+      "category": "Observability"
+    },
+    {
+      "id": "obs-3",
+      "text": "Distributed tracing...",
+      "category": "Observability"
+    },
+    {
+      "id": "culture-1",
+      "text": "Team collaboration...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-2",
+      "text": "Remote work culture...",
+      "category": "Culture"
+    },
+    {
+      "id": "culture-3",
+      "text": "Learning and growth...",
+      "category": "Culture"
+    }
+  ]
+}

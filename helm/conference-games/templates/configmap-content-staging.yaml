@@ -1,0 +1,36 @@
+{{- if and .Values.configMaps.gameContent.create (eq .Values.global.environment "staging") }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "conference-games.fullname" . }}-content-staging
+  labels:
+    {{- include "conference-games.labels" . | nindent 4 }}
+    app.kubernetes.io/component: content
+    app.kubernetes.io/environment: staging
+  annotations:
+    # Force pod restart when ConfigMap changes
+    configmap.reloader.stakater.com/reload: "true"
+    # Staging-specific annotations
+    description: "Staging game content for pre-production testing"
+data:
+  sentences.json: |
+{{ .Files.Get "content/sentences.json" | indent 4 }}
+  acronyms.json: |
+{{ .Files.Get "content/acronyms.json" | indent 4 }}
+  # Staging-specific content for testing
+  staging-sentences.json: |
+    {
+      "sentences": [
+        {
+          "id": "staging-1",
+          "text": "In staging environments, we validate...",
+          "category": "Testing"
+        },
+        {
+          "id": "staging-2",
+          "text": "Pre-production testing helps us...",
+          "category": "Quality Assurance"
+        }
+      ]
+    }
+{{- end }}

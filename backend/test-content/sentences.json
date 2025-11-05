@@ -1,0 +1,14 @@
+{
+  "sentences": [
+    {
+      "id": "test-1",
+      "text": "Testing ConfigMap integration is...",
+      "category": "Testing"
+    },
+    {
+      "id": "k8s-test",
+      "text": "Kubernetes ConfigMaps help with...",
+      "category": "Kubernetes"
+    }
+  ]
+}

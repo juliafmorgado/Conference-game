@@ -1,0 +1,36 @@
+# Development overrides for docker-compose.yml
+# This file is automatically loaded by docker-compose
+version: '3.8'
+
+services:
+  backend:
+    environment:
+      NODE_ENV: development
+      DEBUG: "conference-games:*"
+      LOG_LEVEL: debug
+    volumes:
+      # Add additional development volumes
+      - ./backend/.env.example:/app/.env.example:ro
+    # Override command for development with hot reload
+    command: npm run dev
+
+  frontend:
+    environment:
+      NODE_ENV: development
+      VITE_API_URL: http://localhost:3001
+    # Override command for development
+    command: npm run dev
+
+  postgres:
+    environment:
+      # Development database settings
+      POSTGRES_DB: conference_games_dev
+    ports:
+      - "5432:5432"
+    # Add development-specific volumes
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+volumes:
+  postgres_dev_data:

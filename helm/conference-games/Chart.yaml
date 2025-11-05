@@ -1,0 +1,18 @@
+apiVersion: v2
+name: conference-games
+description: A Helm chart for Conference Games web application
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - conference
+  - games
+  - web-app
+  - react
+  - nodejs
+home: https://github.com/your-org/conference-games
+sources:
+  - https://github.com/your-org/conference-games
+maintainers:
+  - name: Conference Games Team
+    email: team@example.com

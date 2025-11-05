@@ -1,0 +1,64 @@
+{
+  "acronyms": [
+    {
+      "id": "api",
+      "term": "API",
+      "meaning": "Application Programming Interface"
+    },
+    {
+      "id": "cicd",
+      "term": "CI/CD",
+      "meaning": "Continuous Integration/Continuous Deployment"
+    },
+    {
+      "id": "sre",
+      "term": "SRE",
+      "meaning": "Site Reliability Engineering"
+    },
+    {
+      "id": "k8s",
+      "term": "K8s",
+      "meaning": "Kubernetes"
+    },
+    {
+      "id": "yaml",
+      "term": "YAML",
+      "meaning": "YAML Ain't Markup Language"
+    },
+    {
+      "id": "json",
+      "term": "JSON",
+      "meaning": "JavaScript Object Notation"
+    },
+    {
+      "id": "rest",
+      "term": "REST",
+      "meaning": "Representational State Transfer"
+    },
+    {
+      "id": "crud",
+      "term": "CRUD",
+      "meaning": "Create, Read, Update, Delete"
+    },
+    {
+      "id": "sql",
+      "term": "SQL",
+      "meaning": "Structured Query Language"
+    },
+    {
+      "id": "nosql",
+      "term": "NoSQL",
+      "meaning": "Not Only SQL"
+    },
+    {
+      "id": "aws",
+      "term": "AWS",
+      "meaning": "Amazon Web Services"
+    },
+    {
+      "id": "eks",
+      "term": "EKS",
+      "meaning": "Elastic Kubernetes Service"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{{- if and .Values.configMaps.gameContent.create (eq .Values.global.environment "development") }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "conference-games.fullname" . }}-content-dev
+  labels:
+    {{- include "conference-games.labels" . | nindent 4 }}
+    app.kubernetes.io/component: content
+    app.kubernetes.io/environment: development
+  annotations:
+    # Force pod restart when ConfigMap changes
+    configmap.reloader.stakater.com/reload: "true"
+    # Development-specific annotations
+    description: "Development game content with additional test data"
+data:
+  sentences.json: |
+{{ .Files.Get "content/sentences.json" | indent 4 }}
+  acronyms.json: |
+{{ .Files.Get "content/acronyms.json" | indent 4 }}
+  # Additional development-only content
+  test-sentences.json: |
+    {
+      "sentences": [
+        {
+          "id": "dev-test-1",
+          "text": "In development mode, debugging is...",
+          "category": "Development"
+        },
+        {
+          "id": "dev-test-2", 
+          "text": "The best way to test ConfigMap changes is...",
+          "category": "Testing"
+        },
+        {
+          "id": "dev-test-3",
+          "text": "Hot reload functionality works by...",
+          "category": "Development"
+        }
+      ]
+    }
+  test-acronyms.json: |
+    {
+      "acronyms": [
+        {
+          "id": "dev-test-1",
+          "term": "DEV",
+          "meaning": "Development Environment"
+        },
+        {
+          "id": "dev-test-2",
+          "term": "HMR",
+          "meaning": "Hot Module Replacement"
+        }
+      ]
+    }
+{{- end }}

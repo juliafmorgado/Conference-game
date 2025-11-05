@@ -1,0 +1,14 @@
+{
+  "acronyms": [
+    {
+      "id": "test-1",
+      "term": "CM",
+      "meaning": "ConfigMap"
+    },
+    {
+      "id": "test-2",
+      "term": "K8s",
+      "meaning": "Kubernetes"
+    }
+  ]
+}

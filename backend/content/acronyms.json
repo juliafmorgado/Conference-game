@@ -1,0 +1,310 @@
+{
+  "acronyms": [
+    {
+      "id": "k8s",
+      "term": "K8s",
+      "meaning": "Kubernetes",
+      "domain": "Container Orchestration"
+    },
+    {
+      "id": "cicd",
+      "term": "CI/CD",
+      "meaning": "Continuous Integration/Continuous Deployment",
+      "domain": "DevOps"
+    },
+    {
+      "id": "iac",
+      "term": "IaC",
+      "meaning": "Infrastructure as Code",
+      "domain": "DevOps"
+    },
+    {
+      "id": "sre",
+      "term": "SRE",
+      "meaning": "Site Reliability Engineering",
+      "domain": "Operations"
+    },
+    {
+      "id": "mttr",
+      "term": "MTTR",
+      "meaning": "Mean Time To Recovery",
+      "domain": "Observability"
+    },
+    {
+      "id": "mtbf",
+      "term": "MTBF",
+      "meaning": "Mean Time Between Failures",
+      "domain": "Observability"
+    },
+    {
+      "id": "sla",
+      "term": "SLA",
+      "meaning": "Service Level Agreement",
+      "domain": "Operations"
+    },
+    {
+      "id": "slo",
+      "term": "SLO",
+      "meaning": "Service Level Objective",
+      "domain": "Operations"
+    },
+    {
+      "id": "sli",
+      "term": "SLI",
+      "meaning": "Service Level Indicator",
+      "domain": "Observability"
+    },
+    {
+      "id": "rbac",
+      "term": "RBAC",
+      "meaning": "Role-Based Access Control",
+      "domain": "Security"
+    },
+    {
+      "id": "crd",
+      "term": "CRD",
+      "meaning": "Custom Resource Definition",
+      "domain": "Kubernetes"
+    },
+    {
+      "id": "hpa",
+      "term": "HPA",
+      "meaning": "Horizontal Pod Autoscaler",
+      "domain": "Kubernetes"
+    },
+    {
+      "id": "vpa",
+      "term": "VPA",
+      "meaning": "Vertical Pod Autoscaler",
+      "domain": "Kubernetes"
+    },
+    {
+      "id": "pvc",
+      "term": "PVC",
+      "meaning": "Persistent Volume Claim",
+      "domain": "Kubernetes"
+    },
+    {
+      "id": "cni",
+      "term": "CNI",
+      "meaning": "Container Network Interface",
+      "domain": "Networking"
+    },
+    {
+      "id": "csi",
+      "term": "CSI",
+      "meaning": "Container Storage Interface",
+      "domain": "Storage"
+    },
+    {
+      "id": "oci",
+      "term": "OCI",
+      "meaning": "Open Container Initiative",
+      "domain": "Containers"
+    },
+    {
+      "id": "gitops",
+      "term": "GitOps",
+      "meaning": "Git-based Operations",
+      "domain": "DevOps"
+    },
+    {
+      "id": "yaml",
+      "term": "YAML",
+      "meaning": "YAML Ain't Markup Language",
+      "domain": "Configuration"
+    },
+    {
+      "id": "json",
+      "term": "JSON",
+      "meaning": "JavaScript Object Notation",
+      "domain": "Data Format"
+    },
+    {
+      "id": "api",
+      "term": "API",
+      "meaning": "Application Programming Interface",
+      "domain": "Development"
+    },
+    {
+      "id": "rest",
+      "term": "REST",
+      "meaning": "Representational State Transfer",
+      "domain": "Web Services"
+    },
+    {
+      "id": "grpc",
+      "term": "gRPC",
+      "meaning": "Google Remote Procedure Call",
+      "domain": "Communication"
+    },
+    {
+      "id": "tcp",
+      "term": "TCP",
+      "meaning": "Transmission Control Protocol",
+      "domain": "Networking"
+    },
+    {
+      "id": "udp",
+      "term": "UDP",
+      "meaning": "User Datagram Protocol",
+      "domain": "Networking"
+    },
+    {
+      "id": "dns",
+      "term": "DNS",
+      "meaning": "Domain Name System",
+      "domain": "Networking"
+    },
+    {
+      "id": "tls",
+      "term": "TLS",
+      "meaning": "Transport Layer Security",
+      "domain": "Security"
+    },
+    {
+      "id": "ssl",
+      "term": "SSL",
+      "meaning": "Secure Sockets Layer",
+      "domain": "Security"
+    },
+    {
+      "id": "jwt",
+      "term": "JWT",
+      "meaning": "JSON Web Token",
+      "domain": "Authentication"
+    },
+    {
+      "id": "oauth",
+      "term": "OAuth",
+      "meaning": "Open Authorization",
+      "domain": "Authentication"
+    },
+    {
+      "id": "saml",
+      "term": "SAML",
+      "meaning": "Security Assertion Markup Language",
+      "domain": "Authentication"
+    },
+    {
+      "id": "ldap",
+      "term": "LDAP",
+      "meaning": "Lightweight Directory Access Protocol",
+      "domain": "Directory Services"
+    },
+    {
+      "id": "sql",
+      "term": "SQL",
+      "meaning": "Structured Query Language",
+      "domain": "Database"
+    },
+    {
+      "id": "nosql",
+      "term": "NoSQL",
+      "meaning": "Not Only SQL",
+      "domain": "Database"
+    },
+    {
+      "id": "crud",
+      "term": "CRUD",
+      "meaning": "Create, Read, Update, Delete",
+      "domain": "Database Operations"
+    },
+    {
+      "id": "orm",
+      "term": "ORM",
+      "meaning": "Object-Relational Mapping",
+      "domain": "Database"
+    },
+    {
+      "id": "etl",
+      "term": "ETL",
+      "meaning": "Extract, Transform, Load",
+      "domain": "Data Processing"
+    },
+    {
+      "id": "cdn",
+      "term": "CDN",
+      "meaning": "Content Delivery Network",
+      "domain": "Web Infrastructure"
+    },
+    {
+      "id": "vpc",
+      "term": "VPC",
+      "meaning": "Virtual Private Cloud",
+      "domain": "Cloud Networking"
+    },
+    {
+      "id": "aws",
+      "term": "AWS",
+      "meaning": "Amazon Web Services",
+      "domain": "Cloud Provider"
+    },
+    {
+      "id": "gcp",
+      "term": "GCP",
+      "meaning": "Google Cloud Platform",
+      "domain": "Cloud Provider"
+    },
+    {
+      "id": "ec2",
+      "term": "EC2",
+      "meaning": "Elastic Compute Cloud",
+      "domain": "Cloud Computing"
+    },
+    {
+      "id": "s3",
+      "term": "S3",
+      "meaning": "Simple Storage Service",
+      "domain": "Cloud Storage"
+    },
+    {
+      "id": "rds",
+      "term": "RDS",
+      "meaning": "Relational Database Service",
+      "domain": "Cloud Database"
+    },
+    {
+      "id": "eks",
+      "term": "EKS",
+      "meaning": "Elastic Kubernetes Service",
+      "domain": "Container Orchestration"
+    },
+    {
+      "id": "ecs",
+      "term": "ECS",
+      "meaning": "Elastic Container Service",
+      "domain": "Container Orchestration"
+    },
+    {
+      "id": "ecr",
+      "term": "ECR",
+      "meaning": "Elastic Container Registry",
+      "domain": "Container Registry"
+    },
+    {
+      "id": "alb",
+      "term": "ALB",
+      "meaning": "Application Load Balancer",
+      "domain": "Load Balancing"
+    },
+    {
+      "id": "nlb",
+      "term": "NLB",
+      "meaning": "Network Load Balancer",
+      "domain": "Load Balancing"
+    },
+    {
+      "id": "elb",
+      "term": "ELB",
+      "meaning": "Elastic Load Balancer",
+      "domain": "Load Balancing"
+    },
+    {
+      "id": "iam",
+      "term": "IAM",
+      "meaning": "Identity and Access Management",
+      "domain": "Security"
+    }
+  ]
+}

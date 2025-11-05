@@ -1,0 +1,27 @@
+{{- if .Values.autoscaling.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "conference-games.fullname" . }}-backend
+  labels:
+    {{- include "conference-games.backend.labels" . | nindent 4 }}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      {{- include "conference-games.backend.selectorLabels" . | nindent 6 }}
+---
+{{- if gt (.Values.frontend.replicaCount | int) 1 }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "conference-games.fullname" . }}-frontend
+  labels:
+    {{- include "conference-games.frontend.labels" . | nindent 4 }}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      {{- include "conference-games.frontend.selectorLabels" . | nindent 6 }}
+{{- end }}
+{{- end }}
